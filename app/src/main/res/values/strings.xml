@@ -8,5 +8,6 @@
     <string name="refresh">Refresh</string>
     <string name="newBlog">NewBlog</string>
     <string name="favorite">Favorite</string>
+    <string name="loading">Loading please wait...</string>
 
 </resources>

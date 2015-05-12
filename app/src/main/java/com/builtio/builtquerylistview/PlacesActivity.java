@@ -1,6 +1,7 @@
 package com.builtio.builtquerylistview;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ public class PlacesActivity extends Activity {
 	 * Declaration of BuiltUIListViewController.
 	 */
 	BuiltUIListViewController listview;
+    ProgressDialog progressDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,19 @@ public class PlacesActivity extends Activity {
 		/*
 		 * Initialization of BuiltUIListViewController object.
 		 */
-		listview = new BuiltUIListViewController(PlacesActivity.this, "places");
-		
+		listview = new BuiltUIListViewController(PlacesActivity.this, "blt9f2f3c1d77c907e0","places");
+
+        /*
+         * Initialization of Progress Dialog and progress Dialog
+         */
+
+        initProgressDialog();
+
+        /*
+         * set progress Dialog to the BuiltUIListViewController
+         */
+        listview.setProgressDialog(progressDialog);
+
 		/*
 		 * Setting the BuiltUIListViewController layout to activity (Initialization of layout to activity).
 		 */
@@ -53,7 +66,15 @@ public class PlacesActivity extends Activity {
 		fetchAllMeal_UsingBuiltQuery();
 	}
 
-	private void fetchAllMeal_UsingBuiltQuery() {
+    private void initProgressDialog() {
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading));
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void fetchAllMeal_UsingBuiltQuery() {
 
 		/*
 		 * Setting batch loading of BuiltObject 
